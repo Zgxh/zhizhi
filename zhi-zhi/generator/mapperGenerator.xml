@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+		PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+		"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+	<!-- 数据库驱动包位置 -->
+	<classPathEntry location="D:/apache-maven-3.5.4/repository/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19.jar" />
+
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<!--压制注释-->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<!-- 数据库连接信息 -->
+		 <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+						 connectionURL="jdbc:mysql://localhost:3306/zhizhi"
+						 userId="root"
+						 password="zgxhsql">
+			 <property name="nullCatalogMeansCurrent" value="true"/> <!--压制MySQL 8.x下UserWithBLOBs的生成-->
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- model类的生成 -->
+		<javaModelGenerator targetPackage="com.zhizhi.model" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- 生成mybatis的Mapper.xml文件与接口类文件 -->
+		<sqlMapGenerator targetPackage="com.zhizhi.mapper" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.zhizhi.mapper" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table tableName="user"
+			   domainObjectName="User"
+			   enableCountByExample="false"
+			   enableUpdateByExample="false"
+			   enableDeleteByExample="false"
+			   enableSelectByExample="false"
+			   selectByExampleQueryId="false" />
+		<table tableName="question"
+			   domainObjectName="Question"
+			   enableCountByExample="false"
+			   enableUpdateByExample="false"
+			   enableDeleteByExample="false"
+			   enableSelectByExample="false"
+			   selectByExampleQueryId="false" />
+		<table tableName="answer"
+			   domainObjectName="Answer"
+			   enableCountByExample="false"
+			   enableUpdateByExample="false"
+			   enableDeleteByExample="false"
+			   enableSelectByExample="false"
+			   selectByExampleQueryId="false" />
+	</context>
+
+</generatorConfiguration>
