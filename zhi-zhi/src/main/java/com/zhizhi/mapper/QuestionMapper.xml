@@ -5,16 +5,45 @@
   <resultMap id="BaseResultMap" type="com.zhizhi.model.Question">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="content" property="content" />
     <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
-  </resultMap>
-
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.zhizhi.model.Question">
-    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
   </resultMap>
 
   <sql id="Base_Column_List">
-    id, title, publish_time, uid
+    id, title, content, publish_time, uid, username
   </sql>
+
+  <!--根据用户id查该用户的所有提问，返回question list-->
+  <select id="selectQuestionByUid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+     select
+     <include refid="Base_Column_List"/>
+     from question
+     where uid = #{uid,jdbcType=INTEGER}
+  </select>
+
+    <!--根据用户名查询该用户的所有提问，返回question list-->
+    <select id="selectQuestionByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from question
+        where username = #{username,jdbcType=VARCHAR}
+    </select>
+
+  <!--提交新的提问-->
+  <insert id="insertQuestion" useGeneratedKeys="true" keyProperty="id" parameterType="com.zhizhi.model.Question">
+    insert
+    into question (title, content, publish_time, uid, username)
+    values (#{title,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}, #{publishTime,jdbcType=TIMESTAMP},
+            #{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR})
+  </insert>
+
+    <!--根据问题主键删除对应问题-->
+    <delete id="deleteQuestionById" parameterType="java.lang.Integer">
+        delete
+        from question
+        where id = #{id}
+    </delete>
 
 </mapper>

@@ -4,17 +4,51 @@
 
   <resultMap id="BaseResultMap" type="com.zhizhi.model.Answer">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
     <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="qid" jdbcType="INTEGER" property="qid" />
   </resultMap>
 
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.zhizhi.model.Answer">
-    <result column="content" jdbcType="LONGVARCHAR" property="content" />
-  </resultMap>
-
   <sql id="Base_Column_List">
-    id, publish_time, uid, qid
+    id, content, publish_time, uid, username, qid
   </sql>
+
+  <!--新建回答-->
+  <insert id="insertAnswer" useGeneratedKeys="true" keyProperty="id" parameterType="com.zhizhi.model.Answer">
+    insert into answer (content, publish_time, uid, username, qid)
+    values (#{content}, #{publishTime}, #{uid}, #{username}, #{qid})
+  </insert>
+
+  <!--根据id更新回答-->
+  <update id="updateAnswer" parameterType="com.zhizhi.model.Answer">
+    update answer
+    set content = #{content},
+        publish_time = #{publishTime}
+    where id = #{id}
+  </update>
+
+  <!--根据id删除Answer-->
+  <delete id="deleteAnswerById" parameterType="java.lang.Integer">
+    delete from answer
+    where id = #{id}
+  </delete>
+
+  <!--根据用户名查询该用户的所有回答-->
+  <select id="selectAnswerByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from answer
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+
+  <!--根据提问id查询所有回答-->
+  <select id="selectAnswerByQid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from answer
+    where qid = #{qid}
+  </select>
 
 </mapper>

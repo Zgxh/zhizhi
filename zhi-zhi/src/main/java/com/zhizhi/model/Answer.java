@@ -1,17 +1,18 @@
 package com.zhizhi.model;
 
-import java.util.Date;
-
 public class Answer {
-    private Integer id;
 
-    private Date publishTime;
+    private Integer id; // 回答的id
 
-    private Integer uid;
+    private String publishTime; // 回答发布的时间
 
-    private Integer qid;
+    private Integer uid; // 回答所属的用户的id
 
-    private String content;
+    private String username; // 回答所属的用户的用户名
+
+    private Integer qid; // 回答对应的问题的id
+
+    private String content; // 回答的内容
 
     public Integer getId() {
         return id;
@@ -21,11 +22,11 @@ public class Answer {
         this.id = id;
     }
 
-    public Date getPublishTime() {
+    public String getPublishTime() {
         return publishTime;
     }
 
-    public void setPublishTime(Date publishTime) {
+    public void setPublishTime(String publishTime) {
         this.publishTime = publishTime;
     }
 
@@ -51,5 +52,13 @@ public class Answer {
 
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

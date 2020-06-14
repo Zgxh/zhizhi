@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -29,10 +30,12 @@ public class UserService implements UserDetailsService {
     @Autowired
     UserMapper userMapper;
 
+    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     /**
      * 根据用户名查用户
-     * @param s
-     * @return
+     * @param s 用户名
+     * @return UserDetails对象
      * @throws UsernameNotFoundException
      */
     @Override
@@ -46,7 +49,7 @@ public class UserService implements UserDetailsService {
 
     /**
      * 注册用户
-     * @param user
+     * @param user User体
      * @return 0表示用户名已存在；1表示注册成功；2表示注册失败
      */
     public int regUser(User user) {
@@ -55,7 +58,7 @@ public class UserService implements UserDetailsService {
             return 0;
         }
         user.setPassword(passwordEncoder.encode(user.getPassword())); // 加密密码
-        user.setRegTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        user.setRegTime(dateFormat.format(new Date())); // 添加用户注册时间
         int userId = userMapper.insertUser(user);
         if (userId > 0) {
             return 1;
@@ -66,11 +69,15 @@ public class UserService implements UserDetailsService {
 
     /**
      * 根据用户名查用户id
-     * @param username
-     * @return
+     * @param username 用户名
+     * @return 用户id
      */
     public int selectIdByUsername(String username) {
         User user = userMapper.selectUserByUsername(username);
-        return user.getId();
+        if (user == null) {
+            return 0;
+        } else {
+            return user.getId();
+        }
     }
 }
