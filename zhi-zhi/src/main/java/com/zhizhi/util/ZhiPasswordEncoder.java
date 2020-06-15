@@ -1,4 +1,4 @@
-package com.zhizhi.config;
+package com.zhizhi.util;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;

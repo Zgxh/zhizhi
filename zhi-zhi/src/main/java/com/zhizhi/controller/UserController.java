@@ -28,8 +28,8 @@ public class UserController {
 
     /**
      * 处理用户注册
-     * @param user
-     * @return
+     * @param user 用户信息
+     * @return json对象ResponseObject
      */
     @PostMapping("/new")
     public ResponseObject reg(User user) {
@@ -43,6 +43,11 @@ public class UserController {
         }
     }
 
+    /**
+     * 根据用户名查询用户信息
+     * @param username 用户名
+     * @return 用户User对象的序列化结果
+     */
     @GetMapping("/get")
     public User getUser(String username) {
         User user = (User) userService.loadUserByUsername(username);

@@ -35,4 +35,13 @@ public class ResponseObject {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+    /**
+     * toString()方法被重写成了json序列化的形式
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "{\"status\":\"" + status + "\",\"msg\":\"" + msg + "\"}";
+    }
 }

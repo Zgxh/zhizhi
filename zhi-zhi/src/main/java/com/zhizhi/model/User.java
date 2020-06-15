@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * User类，实现了Spring Security的UserDetails接口，用于身份验证。
+ * User Bean，实现了Spring Security的UserDetails接口，用于身份验证。
  */
 public class User implements UserDetails {
 
@@ -60,35 +60,56 @@ public class User implements UserDetails {
     /**
      * 以下方法实现UserDetails的接口方法，使用 @JsonIgnore 在序列化时忽略对应字段。
      */
+
+    /**
+     * 账户是否未过期
+     * @return
+     */
     @Override
     @JsonIgnore
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    /**
+     * 账户是否未被锁
+     * @return
+     */
     @Override
     @JsonIgnore
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    /**
+     * 密码是否未过期
+     * @return
+     */
     @Override
     @JsonIgnore
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    /**
+     * 账户是否可用
+     * @return
+     */
     @Override
     @JsonIgnore
     public boolean isEnabled() {
         return true;
     }
 
+    /**
+     * 用户权限集，本项目User实际没有设置权限，只是为了简单地实现Spring Security要求的方法
+     * @return
+     */
     @Override
     @JsonIgnore
-    public Collection<? extends GrantedAuthority> getAuthorities() { // User实际没有设置权限，简单地实现Spring Security要求的方法
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("SIMPLE_USER"));
+        authorities.add(new SimpleGrantedAuthority("ROLE_user"));
         return authorities;
     }
 }

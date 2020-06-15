@@ -1,5 +1,8 @@
 package com.zhizhi.model;
 
+/**
+ * Question Bean
+ */
 public class Question {
 
     private Integer id; // 问题id
