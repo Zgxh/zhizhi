@@ -1,15 +1,14 @@
 package com.zhizhi.service;
 
 import com.zhizhi.mapper.QuestionMapper;
+import com.zhizhi.wrapper.Page;
 import com.zhizhi.model.Question;
-import com.zhizhi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -32,16 +31,6 @@ public class QuestionService {
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
-     * 根据用户名查该用户的所有提问
-     * @param username 用户名
-     * @return 问题list
-     */
-    public List<Question> selectQuestionByUsername(String username) {
-        List<Question> questions = questionMapper.selectQuestionByUsername(username);
-        return questions;
-    }
-
-    /**
      * 新建提问
      * @param question
      * @return 0表示新建失败；1表示新建成功
@@ -62,7 +51,7 @@ public class QuestionService {
     }
 
     /**
-     * 根绝问题主键删除对应问题记录
+     * 根据问题主键删除对应问题记录
      * @param id 问题的主键
      * @return 1表示删除成功；0表示删除失败
      */
@@ -73,5 +62,42 @@ public class QuestionService {
         } else {
             return 1;
         }
+    }
+
+    /**
+     * 根据用户名查该用户的所有提问
+     * @param username 用户名
+     * @return 问题list
+     */
+    public List<Question> selectQuestionByUsername(String username) {
+        List<Question> questions = questionMapper.selectQuestionByUsername(username);
+        return questions;
+    }
+
+    /**
+     * 根据页码查当前页面的所有提问
+     * @param pageNum 页码
+     * @return 当前页面的所有提问的Page包装类
+     */
+    public Page<Question> selectQuestionByPage(int pageNum) {
+        if (pageNum <= 0) { // 防止越界
+            pageNum = 1;
+        }
+        Page<Question> page = new Page<>();
+        page.setCurrentPageIndex(pageNum);
+        int totalRecordNum = questionMapper.selectCount();
+        page.setTotalRecordNum(totalRecordNum);
+        int pageSize = page.getPageSize();
+        int totalPageNum =  totalRecordNum / pageSize;
+        totalPageNum = totalRecordNum % pageSize > 0 ? totalPageNum + 1: totalPageNum; // 未满一页的按一页计算
+        page.setTotalPageNum(totalPageNum);
+        if (totalPageNum < pageNum) { // 如果请求的页码超过了数据库页码总数，则返回空问题列表
+            return page;
+        }
+        int startIndex = (pageNum - 1) * pageSize;
+        List<Question> currentPage = questionMapper.selectQuestionByPage(startIndex, pageSize);
+        System.out.println(currentPage);
+        page.setCurrentPage(currentPage);
+        return page;
     }
 }

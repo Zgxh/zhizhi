@@ -1,7 +1,7 @@
 package com.zhizhi.controller;
 
 import com.zhizhi.model.Answer;
-import com.zhizhi.model.ResponseObject;
+import com.zhizhi.wrapper.ResponseObject;
 import com.zhizhi.service.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -3,7 +3,7 @@ package com.zhizhi.model;
 /**
  * Answer Bean
  */
-public class Answer {
+public class Answer implements Pageable {
 
     private Integer id; // 回答的id
 

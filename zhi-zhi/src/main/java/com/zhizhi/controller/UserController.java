@@ -1,14 +1,11 @@
 package com.zhizhi.controller;
 
-import com.zhizhi.model.Question;
-import com.zhizhi.model.ResponseObject;
+import com.zhizhi.wrapper.ResponseObject;
 import com.zhizhi.model.User;
 import com.zhizhi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * 处理user相关请求的控制器

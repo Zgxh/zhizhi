@@ -1,7 +1,8 @@
 package com.zhizhi.controller;
 
 import com.zhizhi.model.Question;
-import com.zhizhi.model.ResponseObject;
+import com.zhizhi.wrapper.Page;
+import com.zhizhi.wrapper.ResponseObject;
 import com.zhizhi.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -56,9 +57,20 @@ public class QuestionController {
      * @param username 用户名
      * @return 该用户的所有提问组成的list
      */
-    @GetMapping("/getall")
+    @GetMapping("/get/all")
     public List<Question> getQuestionsList(String username) {
         List<Question> questions = questionService.selectQuestionByUsername(username);
         return questions;
+    }
+
+    /**
+     * 根据页码获取当前页的问题
+     * @param pageNum 页码
+     * @return 对应页码的包装类Page
+     */
+    @GetMapping("/get/page")
+    public Page<Question> getQuestionPage(Integer pageNum) {
+        Page<Question> page = questionService.selectQuestionByPage(pageNum);
+        return page;
     }
 }

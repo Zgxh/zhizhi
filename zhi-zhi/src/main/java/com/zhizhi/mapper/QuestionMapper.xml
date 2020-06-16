@@ -23,6 +23,19 @@
      where uid = #{uid,jdbcType=INTEGER}
   </select>
 
+    <!--根据页码查询提问，返回question list-->
+    <select id="selectQuestionByPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from question
+        order by id desc
+        limit #{startIndex}, #{pageNum}
+    </select>
+
+    <select id="selectCount" resultType="java.lang.Integer">
+        select count(*) from question
+    </select>
+
     <!--根据用户名查询该用户的所有提问，返回question list-->
     <select id="selectQuestionByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
         select

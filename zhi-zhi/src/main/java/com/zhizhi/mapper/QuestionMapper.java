@@ -22,12 +22,13 @@ public interface QuestionMapper {
      */
     int deleteQuestionById(Integer id);
 
-    // /**
-    //  * 根据用户id查询该用户的所有提问
-    //  * @param uid
-    //  * @return 该用户所有提问对应的list
-    //  */
-    // List<Question> selectQuestionByUid(int uid);
+    /**
+     * 查询某页的数据
+     * @param startIndex 起始index
+     * @param pageNum 查询记录的容量
+     * @return 该页的所有数据组成的list
+     */
+    List<Question> selectQuestionByPage(int startIndex, int pageNum);
 
     /**
      * 根据用户名查询该用户的所有提问
@@ -35,4 +36,10 @@ public interface QuestionMapper {
      * @return 该用户所有提问对应的list
      */
     List<Question> selectQuestionByUsername(String username);
+
+    /**
+     * 查询所有记录总数
+     * @return 记录数
+     */
+    int selectCount();
 }

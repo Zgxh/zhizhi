@@ -1,6 +1,6 @@
 package com.zhizhi.config;
 
-import com.zhizhi.model.ResponseObject;
+import com.zhizhi.wrapper.ResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -1,4 +1,4 @@
-package com.zhizhi.model;
+package com.zhizhi.wrapper;
 
 /**
  * 向前端返回的json对象的包装类
