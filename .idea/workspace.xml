@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bde07a7f-91b6-4514-a557-6821f70a62a5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/model/Pageable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/wrapper/Page.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/controller/AnswerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/controller/AnswerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/controller/QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/controller/QuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/mapper/QuestionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/mapper/QuestionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/mapper/QuestionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/mapper/QuestionMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/model/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/model/Answer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/model/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/model/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/model/ResponseObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/wrapper/ResponseObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/service/QuestionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/util/UserAuthenticationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/util/UserAuthenticationUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/zhi-zhi/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,48 +35,15 @@
     </checked>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/controller/QuestionController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/service/QuestionService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="101" column="5" lean-forward="true" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/mapper/QuestionMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="30" column="67" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="67" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/mapper/QuestionMapper.xml">
+        <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/config/WebSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="32" column="13" lean-forward="true" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+            <state relative-caret-position="374">
+              <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,7 +83,6 @@
         <option value="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/ZhizhiApplication.java" />
         <option value="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/controller/LoginAuthenticationController.java" />
         <option value="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/model/ResponseObject.java" />
-        <option value="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/config/WebSecurityConfig.java" />
         <option value="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/model/User.java" />
         <option value="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/util/UserAuthenticationUtil.java" />
         <option value="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/model/Page.java" />
@@ -141,6 +95,7 @@
         <option value="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/controller/QuestionController.java" />
         <option value="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/service/QuestionService.java" />
         <option value="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/mapper/QuestionMapper.xml" />
+        <option value="$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/config/WebSecurityConfig.java" />
       </list>
     </option>
   </component>
@@ -175,7 +130,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2007" />
+    <option name="x" value="2006" />
     <option name="y" value="-155" />
     <option name="width" value="2480" />
     <option name="height" value="1460" />
@@ -188,6 +143,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -318,17 +275,6 @@
               <item name="zhi-zhi" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zhizhi" type="462c0819:PsiDirectoryNode" />
-              <item name="wrapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zhizhi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zhizhi" type="462c0819:PsiDirectoryNode" />
-              <item name="zhi-zhi" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -344,8 +290,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -404,7 +348,8 @@
       <workItem from="1592018091271" duration="19997000" />
       <workItem from="1592112230156" duration="30032000" />
       <workItem from="1592206346808" duration="13360000" />
-      <workItem from="1592295600545" duration="9106000" />
+      <workItem from="1592295600545" duration="9421000" />
+      <workItem from="1592315679024" duration="133000" />
     </task>
     <task id="LOCAL-00001" summary="知之后台Server">
       <created>1592052287290</created>
@@ -427,17 +372,24 @@
       <option name="project" value="LOCAL" />
       <updated>1592234113549</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[add] Generic class and page query">
+      <created>1592307860571</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1592307860571</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72495000" />
+    <option name="totallyTimeSpent" value="72943000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1991" y="-152" width="1984" height="1166" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49804434" visible="true" weight="0.18847352" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49804434" visible="true" weight="0.19055036" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Web" order="2" sideWeight="0.5019557" side_tool="true" weight="0.17549326" />
       <window_info id="Designer" order="3" />
@@ -445,7 +397,7 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.37227723" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.37227723" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -474,7 +426,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="知之后台Server" />
     <MESSAGE value="[update] authentication" />
-    <option name="LAST_COMMIT_MESSAGE" value="[update] authentication" />
+    <MESSAGE value="[add] Generic class and page query" />
+    <option name="LAST_COMMIT_MESSAGE" value="[add] Generic class and page query" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d1a1c812-7cc4-4d93-8ccf-ac9f517bfe91/console.sql">
@@ -675,16 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/config/WebSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2024">
-          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/util/UserAuthenticationUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
@@ -720,13 +663,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
           <caret line="49" column="7" lean-forward="true" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/wrapper/Page.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -805,20 +741,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/controller/QuestionController.java">
+    <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/mapper/UserMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
+        <state relative-caret-position="396">
+          <caret line="18" column="21" lean-forward="true" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/mapper/UserMapper.java">
+    <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/mapper/QuestionMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="21" lean-forward="true" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        <state relative-caret-position="227">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/mapper/QuestionMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="30" column="67" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -835,20 +778,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/mapper/QuestionMapper.java">
+    <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/controller/QuestionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="30" column="67" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="67" />
+        <state relative-caret-position="496">
+          <caret line="75" column="1" lean-forward="true" selection-start-line="75" selection-start-column="1" selection-end-line="75" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/mapper/QuestionMapper.xml">
+    <entry file="file://$PROJECT_DIR$/zhi-zhi/src/main/java/com/zhizhi/config/WebSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="32" column="13" lean-forward="true" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        <state relative-caret-position="374">
+          <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
