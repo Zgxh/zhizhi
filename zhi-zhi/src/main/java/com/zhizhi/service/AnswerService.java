@@ -2,6 +2,7 @@ package com.zhizhi.service;
 
 import com.zhizhi.mapper.AnswerMapper;
 import com.zhizhi.model.Answer;
+import com.zhizhi.model.Question;
 import com.zhizhi.util.UserAuthenticationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,9 @@ public class AnswerService {
     AnswerMapper answerMapper;
 
     @Autowired
+    QuestionService questionService;
+
+    @Autowired
     UserService userService;
 
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -40,6 +44,11 @@ public class AnswerService {
         String authenticatedUsername = UserAuthenticationUtil.getUserAuthentication().getUsername();
         String usernameForCurAnswer = answer.getUsername();
         if (usernameForCurAnswer == null || !usernameForCurAnswer.equals(authenticatedUsername)) {
+            return 0;
+        }
+        // 如果qid未空或者qid对应的提问不存在，则创建失败
+        Integer qid = answer.getQid();
+        if (qid == null || questionService.selectQuestionById(qid) == null) {
             return 0;
         }
         // 设置Answer其他属性

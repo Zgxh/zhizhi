@@ -81,6 +81,15 @@ public class QuestionService {
     }
 
     /**
+     * 根据问题id查询问题
+     * @param id
+     * @return
+     */
+    public Question selectQuestionById(Integer id) {
+        return questionMapper.selectQuestionById(id);
+    }
+
+    /**
      * 根据用户名查该用户的所有提问
      * @param username 用户名
      * @return 问题list

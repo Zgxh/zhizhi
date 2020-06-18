@@ -43,7 +43,7 @@ public class QuestionController {
      * @return json对象ResponseObject
      */
     @DeleteMapping("/delete")
-    public ResponseObject deleteQuestion(Integer id) {
+    public ResponseObject deleteQuestion(@RequestBody Integer id) {
         int result = questionService.deleteQuestionById(id);
         if (result == 0) {
             return new ResponseObject("failure", "问题删除失败！");
@@ -57,8 +57,8 @@ public class QuestionController {
      * @param username 用户名
      * @return 该用户的所有提问组成的list
      */
-    @GetMapping("/get/user")
-    public List<Question> getQuestionsList(String username) {
+    @GetMapping("/get/user/{username}")
+    public List<Question> getQuestionsList(@PathVariable String username) {
         List<Question> questions = questionService.selectQuestionByUsername(username);
         return questions;
     }
@@ -78,8 +78,8 @@ public class QuestionController {
      * @param pageNum 页码
      * @return 对应页码的包装类Page
      */
-    @GetMapping("/get/page")
-    public Page<Question> getQuestionPage(Integer pageNum) {
+    @GetMapping("/get/page/{pageNum}")
+    public Page<Question> getQuestionPage(@PathVariable Integer pageNum) {
         Page<Question> page = questionService.selectQuestionByPage(pageNum);
         return page;
     }

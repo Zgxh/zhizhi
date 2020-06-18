@@ -23,6 +23,13 @@ public interface QuestionMapper {
     int deleteQuestionById(Integer id);
 
     /**
+     * 根据问题id查询问题
+     * @param id 问题id
+     * @return 问题实体
+     */
+    Question selectQuestionById(Integer id);
+
+    /**
      * 根据问题id查询该提问所属的用户
      * @param id 问题id
      * @return 用户名

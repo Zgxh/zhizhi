@@ -45,8 +45,8 @@ public class UserController {
      * @param username 用户名
      * @return 用户User对象的序列化结果
      */
-    @GetMapping("/get")
-    public User getUser(String username) {
+    @GetMapping("/get/{username}")
+    public User getUser(@PathVariable String username) {
         User user = (User) userService.loadUserByUsername(username);
         return user;
     }

@@ -57,7 +57,7 @@ public class AnswerController {
      * @return ResponseObject消息
      */
     @DeleteMapping("/delete")
-    public ResponseObject deleteAnswer(Integer id) {
+    public ResponseObject deleteAnswer(@RequestBody Integer id) {
         int result = answerService.deleteAnswerById(id);
         if (result == 0) {
             return new ResponseObject("failure", "回答删除失败！");
@@ -71,8 +71,8 @@ public class AnswerController {
      * @param username 用户名
      * @return ResponseObject消息
      */
-    @GetMapping("/get/user")
-    public List<Answer> selectAnswerByUsername(String username) {
+    @GetMapping("/get/user/{username}")
+    public List<Answer> selectAnswerByUsername(@PathVariable String username) {
         List<Answer> answers = answerService.selectAnswerByUsername(username);
         return answers;
     }
@@ -82,8 +82,8 @@ public class AnswerController {
      * @param qid 问题的id
      * @return ResponseObject消息
      */
-    @GetMapping("/get/question")
-    public List<Answer> selectAnswerByQid(Integer qid) {
+    @GetMapping("/get/question/{qid}")
+    public List<Answer> selectAnswerByQid(@PathVariable Integer qid) {
         List<Answer> answers = answerService.selectAnswerByQid(qid);
         return answers;
     }
