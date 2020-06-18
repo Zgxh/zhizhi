@@ -4,7 +4,7 @@ import com.zhizhi.model.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
- * 用户认证信息工具类，暂未使用
+ * 用户认证信息工具类
  *
  * @author Yu Yang
  * @create 2020-06-14 14:41
@@ -12,7 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 public class UserAuthenticationUtil {
 
     /**
-     * 获取当前认证者信息，暂未使用
+     * 获取当前认证者信息
      * @return
      */
     public static User getUserAuthentication() {

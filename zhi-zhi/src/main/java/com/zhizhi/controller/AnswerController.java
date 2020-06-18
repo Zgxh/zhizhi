@@ -27,7 +27,7 @@ public class AnswerController {
      * @return ResponseObject消息
      */
     @PostMapping("/new")
-    public ResponseObject insertNewAnswer(Answer answer) {
+    public ResponseObject insertNewAnswer(@RequestBody Answer answer) {
         int result = answerService.insertAnswer(answer);
         if (result == 0) {
             return new ResponseObject("failure", "回答上传失败！");
@@ -42,7 +42,7 @@ public class AnswerController {
      * @return ResponseObject消息
      */
     @PutMapping("/update")
-    public ResponseObject updateAnswer(Answer answer) {
+    public ResponseObject updateAnswer(@RequestBody Answer answer) {
         int result = answerService.updateAnswer(answer);
         if (result == 0) {
             return new ResponseObject("failure", "回答更新失败！");
@@ -71,7 +71,7 @@ public class AnswerController {
      * @param username 用户名
      * @return ResponseObject消息
      */
-    @GetMapping("/byuser")
+    @GetMapping("/get/user")
     public List<Answer> selectAnswerByUsername(String username) {
         List<Answer> answers = answerService.selectAnswerByUsername(username);
         return answers;
@@ -82,7 +82,7 @@ public class AnswerController {
      * @param qid 问题的id
      * @return ResponseObject消息
      */
-    @GetMapping("/byquestion")
+    @GetMapping("/get/question")
     public List<Answer> selectAnswerByQid(Integer qid) {
         List<Answer> answers = answerService.selectAnswerByQid(qid);
         return answers;

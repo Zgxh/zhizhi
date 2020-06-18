@@ -30,8 +30,15 @@ public interface AnswerMapper {
     int deleteAnswerById(Integer id);
 
     /**
+     * 根据回答id查询所属用户
+     * @param id 回答id
+     * @return 用户名
+     */
+    String selectUsernameById(Integer id);
+
+    /**
      * 根据用户名查询用户的所有回答
-     * @param username
+     * @param username 用户名
      * @return 该用户所有回答组成的 list
      */
     List<Answer> selectAnswerByUsername(String username);

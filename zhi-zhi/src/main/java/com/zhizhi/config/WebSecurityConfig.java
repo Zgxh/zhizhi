@@ -22,18 +22,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    /**
+/*    *//**
      * 在内存中配置管理员
      * @param auth
      * @throws Exception
-     */
+     *//*
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("renyan")
                 .password(passwordEncoder.encode("renyan"))
                 .roles("admin");
-    }
+    }*/
 
     /**
      * 登录认证逻辑：在未登录情况下访问需要认证的资源时会触发authenticationEntryPoint(authenticationEntryPoint)，
@@ -48,6 +48,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/user/new")
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

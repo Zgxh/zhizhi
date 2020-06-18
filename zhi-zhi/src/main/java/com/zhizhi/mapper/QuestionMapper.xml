@@ -32,6 +32,7 @@
         limit #{startIndex}, #{pageNum}
     </select>
 
+    <!--统计问题总数-->
     <select id="selectCount" resultType="java.lang.Integer">
         select count(*) from question
     </select>
@@ -42,6 +43,21 @@
         <include refid="Base_Column_List"/>
         from question
         where username = #{username,jdbcType=VARCHAR}
+    </select>
+
+    <!--获取所有问题,并按创建时间后先排序-->
+    <select id="selectAllQuestions" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from question
+        order by id desc
+    </select>
+
+    <!--根据问题id获取用户名username-->
+    <select id="selectUsernameById" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select username
+        from question
+        where id = #{id}
     </select>
 
   <!--提交新的提问-->

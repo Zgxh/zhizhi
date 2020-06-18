@@ -28,7 +28,7 @@ public class QuestionController {
      * @return json对象ResponseObject
      */
     @PostMapping("/new")
-    public ResponseObject insertNewQuestion(Question question) {
+    public ResponseObject insertNewQuestion(@RequestBody Question question) {
         int result = questionService.insertQuestion(question);
         if (result == 0) {
             return new ResponseObject("failure", "提问创建失败！");
@@ -57,9 +57,19 @@ public class QuestionController {
      * @param username 用户名
      * @return 该用户的所有提问组成的list
      */
-    @GetMapping("/get/all")
+    @GetMapping("/get/user")
     public List<Question> getQuestionsList(String username) {
         List<Question> questions = questionService.selectQuestionByUsername(username);
+        return questions;
+    }
+
+    /**
+     * 获取数据库中所有问题
+     * @return 问题list
+     */
+    @GetMapping("/get/all")
+    public List<Question> getAllQuestions() {
+        List<Question> questions = questionService.selectAllQuestions();
         return questions;
     }
 

@@ -23,6 +23,13 @@ public interface QuestionMapper {
     int deleteQuestionById(Integer id);
 
     /**
+     * 根据问题id查询该提问所属的用户
+     * @param id 问题id
+     * @return 用户名
+     */
+    String selectUsernameById(Integer id);
+
+    /**
      * 查询某页的数据
      * @param startIndex 起始index
      * @param pageNum 查询记录的容量
@@ -36,6 +43,12 @@ public interface QuestionMapper {
      * @return 该用户所有提问对应的list
      */
     List<Question> selectQuestionByUsername(String username);
+
+    /**
+     * 获取所有问题
+     * @return 问题list
+     */
+    List<Question> selectAllQuestions();
 
     /**
      * 查询所有记录总数

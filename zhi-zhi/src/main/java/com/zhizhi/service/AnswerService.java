@@ -2,6 +2,7 @@ package com.zhizhi.service;
 
 import com.zhizhi.mapper.AnswerMapper;
 import com.zhizhi.model.Answer;
+import com.zhizhi.util.UserAuthenticationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,16 +36,20 @@ public class AnswerService {
      * @return 0表示新建回答失败；1表示成功
      */
     public int insertAnswer(Answer answer) {
-        int uid = userService.selectIdByUsername(answer.getUsername());
-        if (uid <= 0) { // 用户不存在
+        // 如果当前answer对应的username与当前认证用户不一致，则不允许新建回答
+        String authenticatedUsername = UserAuthenticationUtil.getUserAuthentication().getUsername();
+        String usernameForCurAnswer = answer.getUsername();
+        if (usernameForCurAnswer == null || !usernameForCurAnswer.equals(authenticatedUsername)) {
             return 0;
         }
+        // 设置Answer其他属性
+        int uid = userService.selectIdByUsername(usernameForCurAnswer);
         answer.setUid(uid);
         answer.setPublishTime(dateFormat.format(new Date()));
         int result = answerMapper.insertAnswer(answer);
-        if (result <= 0) {
+        if (result <= 0) { // 如果数据库没有变动，则新建回答失败
             return 0;
-        } else {
+        } else { // 新建回答成功
             return 1;
         }
     }
@@ -55,6 +60,12 @@ public class AnswerService {
      * @return 1表示成功更新回答；0表示回答未更新
      */
     public int updateAnswer(Answer answer) {
+        // 如果当前answer对应的username与当前认证用户不一致，则不允许新建回答
+        String authenticatedUsername = UserAuthenticationUtil.getUserAuthentication().getUsername();
+        String usernameForCurAnswer = answer.getUsername();
+        if (usernameForCurAnswer == null || !usernameForCurAnswer.equals(authenticatedUsername)) {
+            return 0;
+        }
         answer.setPublishTime(dateFormat.format(new Date()));
         int result = answerMapper.updateAnswer(answer);
         if (result > 0) {
@@ -65,13 +76,21 @@ public class AnswerService {
     }
 
     /**
-     * 根据id删除对应answer
+     * 根据回答id删除对应answer
      * @param id answerId
      * @return 1表示成功删除；0表示删除失败
      */
     public int deleteAnswerById(Integer id) {
+        if (id == null || id <= 0) { // 如果回答id不合要求，不允许删除回答
+            return 0;
+        }
+        // 如果回答id所属用户不是当前认证的用户，则不允许删除
+        String usernameForCurId = answerMapper.selectUsernameById(id);
+        if (!UserAuthenticationUtil.getUserAuthentication().getUsername().equals(usernameForCurId)) {
+            return 0;
+        }
+        // 从数据库删除该回答记录
         int result = answerMapper.deleteAnswerById(id);
-        System.out.println("===== result = " + result);
         if (result <= 0) { // 删除失败
             return 0;
         } else {

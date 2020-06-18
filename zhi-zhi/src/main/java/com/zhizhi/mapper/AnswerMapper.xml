@@ -51,4 +51,12 @@
     where qid = #{qid}
   </select>
 
+  <!--根据提问id查询所属用户username-->
+  <select id="selectUsernameById" parameterType="java.lang.Integer" resultType="java.lang.String">
+    select
+    username
+    from answer
+    where id = #{id}
+  </select>
+
 </mapper>
