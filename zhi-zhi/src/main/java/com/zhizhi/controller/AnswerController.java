@@ -56,8 +56,8 @@ public class AnswerController {
      * @param id answer的主键id
      * @return ResponseObject消息
      */
-    @DeleteMapping("/delete")
-    public ResponseObject deleteAnswer(@RequestBody Integer id) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseObject deleteAnswer(@PathVariable Integer id) {
         int result = answerService.deleteAnswerById(id);
         if (result == 0) {
             return new ResponseObject("failure", "回答删除失败！");

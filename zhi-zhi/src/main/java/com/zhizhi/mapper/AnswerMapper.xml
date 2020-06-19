@@ -35,6 +35,14 @@
     where id = #{id}
   </delete>
 
+  <!--根据主键查询回答详情-->
+  <select id="selectAnswerById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from answer
+    where id = #{id}
+  </select>
+
   <!--根据用户名查询该用户的所有回答-->
   <select id="selectAnswerByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
     select

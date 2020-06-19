@@ -28,6 +28,9 @@ public class QuestionService {
     QuestionMapper questionMapper;
 
     @Autowired
+    AnswerService answerService;
+
+    @Autowired
     UserService userService;
 
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -81,12 +84,22 @@ public class QuestionService {
     }
 
     /**
-     * 根据问题id查询问题
-     * @param id
-     * @return
+     * 根据问题主键id查询问题
+     * @param id 问题主键id
+     * @return 问题详情 Question
      */
     public Question selectQuestionById(Integer id) {
         return questionMapper.selectQuestionById(id);
+    }
+
+    /**
+     * 查询某个answer对应的问题
+     * @param answerId answer id
+     * @return 问题详情 Question
+     */
+    public Question selectQuestionByAnswer(Integer answerId) {
+        Integer questionId = answerService.selectAnswerById(answerId).getQid();
+        return questionMapper.selectQuestionById(questionId);
     }
 
     /**

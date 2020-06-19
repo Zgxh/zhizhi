@@ -30,6 +30,13 @@ public interface AnswerMapper {
     int deleteAnswerById(Integer id);
 
     /**
+     * 根据主键查回答
+     * @param id 主键
+     * @return 回答详情
+     */
+    Answer selectAnswerById(Integer id);
+
+    /**
      * 根据回答id查询所属用户
      * @param id 回答id
      * @return 用户名

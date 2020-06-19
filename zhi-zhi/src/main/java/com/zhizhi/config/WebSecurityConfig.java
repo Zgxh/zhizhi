@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling() // 未登录时的处理
                 .authenticationEntryPoint((httpServletRequest, httpServletResponse, authenticationException) -> { // 未登录返回json
-                    httpServletResponse.setContentType("application/json");
+                    httpServletResponse.setContentType("application/json; charset=utf-8");
                     httpServletResponse.setCharacterEncoding("utf-8");
                     PrintWriter printWriter = httpServletResponse.getWriter();
                     printWriter.write(new ResponseObject("failure", "用户尚未登录！").toString());
@@ -69,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .permitAll()
                 .successHandler((httpServletRequest, httpServletResponse, authentication) -> { // 登录认证成功返回json
-                    httpServletResponse.setContentType("application/json");
+                    httpServletResponse.setContentType("application/json; charset=utf-8");
                     httpServletResponse.setCharacterEncoding("utf-8");
                     PrintWriter printWriter = httpServletResponse.getWriter();
                     printWriter.write(new ResponseObject("success", "登录成功！").toString());
@@ -77,7 +77,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     printWriter.close();
                 })
                 .failureHandler((httpServletRequest, httpServletResponse, authenticationException) -> { // 登录认证失败返回json
-                    httpServletResponse.setContentType("application/json");
+                    httpServletResponse.setContentType("application/json; charset=utf-8");
                     httpServletResponse.setCharacterEncoding("utf-8");
                     PrintWriter printWriter = httpServletResponse.getWriter();
                     printWriter.write(new ResponseObject("failure", "登录失败！").toString());
@@ -88,7 +88,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout") // 客户端向"/logout"发送GET请求即可注销登录
                 .logoutSuccessHandler((httpServletRequest, httpServletResponse, authentication) -> { // 用户注销成功返回json
-                    httpServletResponse.setContentType("application/json");
+                    httpServletResponse.setContentType("application/json; charset=utf-8");
                     httpServletResponse.setCharacterEncoding("utf-8");
                     PrintWriter printWriter = httpServletResponse.getWriter();
                     printWriter.write(new ResponseObject("success", "注销成功！").toString());

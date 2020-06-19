@@ -108,6 +108,15 @@ public class AnswerService {
     }
 
     /**
+     * 根据回答的主键id查回答详情
+     * @param id 主键
+     * @return 回答详情 Answer
+     */
+    public Answer selectAnswerById(Integer id) {
+        return answerMapper.selectAnswerById(id);
+    }
+
+    /**
      * 获取某个用户的所有回答
      * @param username 用户名
      * @return 回答的List

@@ -42,8 +42,8 @@ public class QuestionController {
      * @param id 问题主键
      * @return json对象ResponseObject
      */
-    @DeleteMapping("/delete")
-    public ResponseObject deleteQuestion(@RequestBody Integer id) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseObject deleteQuestion(@PathVariable Integer id) {
         int result = questionService.deleteQuestionById(id);
         if (result == 0) {
             return new ResponseObject("failure", "问题删除失败！");
@@ -61,6 +61,17 @@ public class QuestionController {
     public List<Question> getQuestionsList(@PathVariable String username) {
         List<Question> questions = questionService.selectQuestionByUsername(username);
         return questions;
+    }
+
+    /**
+     * 查询某个回答对应的问题
+     * @param answerId 该回答的id
+     * @return 问题详情 Question
+     */
+    @GetMapping("/get/answer/{aid}")
+    public Question getQuestionByAnswer(@PathVariable("aid") Integer answerId) {
+        Question question = questionService.selectQuestionByAnswer(answerId);
+        return question;
     }
 
     /**
