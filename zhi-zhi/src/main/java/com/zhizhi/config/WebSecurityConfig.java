@@ -7,6 +7,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
 import java.io.PrintWriter;
 
 /**
@@ -22,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     PasswordEncoder passwordEncoder;
 
     /**
-     * 登录认证逻辑：在未登录情况下访问需要认证的资源时会触发authenticationEntryPoint(authenticationEntryPoint)，
+     * 登录认证逻辑：在未登录情况下访问需要认证的资源时会触发authenticationEntryPoint，
      * 之后向客户端返回json消息表示用户未登录，提醒客户端跳转登录页面"/login.html"，并以"username"和"password"字段来POST
      * 登录认证表单到"/login"，认证通过即可放行并返回给客户端登陆成功的json消息，认证不通过则不放行并返回
      * 给客户端登录失败的json消息。
@@ -36,7 +40,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors() // 允许跨域请求
+        http.cors()
+                .configurationSource(getCorsConfigurationSource()) // 允许跨域请求
                 .and()
                 .authorizeRequests()
                 .antMatchers("/user/new", "/question/get/all")
@@ -48,7 +53,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint((httpServletRequest, httpServletResponse, authenticationException) -> { // 未登录返回json
                     httpServletResponse.setContentType("application/json; charset=utf-8");
                     httpServletResponse.setCharacterEncoding("utf-8");
-                    httpServletResponse.setHeader("Access-Control-Allow-Origin", httpServletRequest.getHeader("Origin")); // 添加跨域返回头
                     PrintWriter printWriter = httpServletResponse.getWriter();
                     printWriter.write(new ResponseObject("failure", "用户尚未登录！").toString());
                     printWriter.flush();
@@ -64,7 +68,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     System.out.println("User " + httpServletRequest.getParameter("username") + ", welcome!");
                     httpServletResponse.setContentType("application/json; charset=utf-8");
                     httpServletResponse.setCharacterEncoding("utf-8");
-                    httpServletResponse.setHeader("Access-Control-Allow-Origin", httpServletRequest.getHeader("Origin"));
                     PrintWriter printWriter = httpServletResponse.getWriter();
                     printWriter.write(new ResponseObject("success", "登录成功！").toString());
                     printWriter.flush();
@@ -76,7 +79,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                         + httpServletRequest.getParameter("password"));
                     httpServletResponse.setContentType("application/json; charset=utf-8");
                     httpServletResponse.setCharacterEncoding("utf-8");
-                    httpServletResponse.setHeader("Access-Control-Allow-Origin", httpServletRequest.getHeader("Origin"));
                     PrintWriter printWriter = httpServletResponse.getWriter();
                     printWriter.write(new ResponseObject("failure", "登录失败！").toString());
                     printWriter.flush();
@@ -88,7 +90,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessHandler((httpServletRequest, httpServletResponse, authentication) -> { // 用户注销成功返回json
                     httpServletResponse.setContentType("application/json; charset=utf-8");
                     httpServletResponse.setCharacterEncoding("utf-8");
-                    httpServletResponse.setHeader("Access-Control-Allow-Origin", httpServletRequest.getHeader("Origin"));
                     PrintWriter printWriter = httpServletResponse.getWriter();
                     printWriter.write(new ResponseObject("success", "注销成功！").toString());
                     printWriter.flush();
@@ -103,5 +104,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/index.html", "/login.html", "/static/**"); // 不拦截静态资源、登录页面和index页面
+    }
+
+    /**
+     * 配置跨域源
+     * @return
+     */
+    private CorsConfigurationSource getCorsConfigurationSource() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.addAllowedMethod("*");
+        corsConfiguration.setAllowCredentials(true); // 记住登录，每次请求时携带验证信息
+        corsConfiguration.setMaxAge(3600L);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfiguration);
+
+        return source;
     }
 }

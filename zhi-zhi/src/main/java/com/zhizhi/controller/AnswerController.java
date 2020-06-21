@@ -14,7 +14,7 @@ import java.util.List;
  * @author Yu Yang
  * @create 2020-06-14 13:24
  */
-@CrossOrigin
+// @CrossOrigin
 @RestController
 @RequestMapping("/answer")
 public class AnswerController {
