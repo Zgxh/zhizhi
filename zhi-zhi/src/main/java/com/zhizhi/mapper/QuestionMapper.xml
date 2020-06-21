@@ -21,6 +21,7 @@
      <include refid="Base_Column_List"/>
      from question
      where uid = #{uid,jdbcType=INTEGER}
+     order by id desc
   </select>
 
     <!--根据页码查询提问，返回question list-->
@@ -43,6 +44,7 @@
         <include refid="Base_Column_List"/>
         from question
         where username = #{username,jdbcType=VARCHAR}
+        order by id desc
     </select>
 
     <!--获取所有问题,并按创建时间后先排序-->

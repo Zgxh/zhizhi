@@ -15,6 +15,7 @@ import java.util.List;
  * @author Yu Yang
  * @create 2020-06-14 13:24
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/question")
 public class QuestionController {
